@@ -7,6 +7,9 @@ const routes = require('./routes');
 // importar módulo cors
 const cors = require('cors');
 
+//importar módulo para teste e validação da info no backend
+const { errors } = require('celebrate');
+
 // variável que vai armazenar a minha aplicação
 const app = express();
 
@@ -19,8 +22,11 @@ app.use(express.json());
 // informando as rotas
 app.use(routes);
 
+// usado nos testes do backend
+app.use(errors());
+
 //ouvir a porta 3333
-app.listen(3333);
+module.exports = app;
 
 /**
  * Rota / Recurso
